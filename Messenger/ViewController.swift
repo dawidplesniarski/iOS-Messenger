@@ -76,11 +76,11 @@ class ViewController: UIViewController{
                 } catch let error {
                     print(error.localizedDescription)
                 }
-            })task.resume()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+            task.resume()
     }
     
     
@@ -129,5 +129,14 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         let message = messagesArray[indexPath.row]
         cell.textLabel?.text = message
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+        print("Deleted")
+
+        self.messagesArray.remove(at: indexPath.row)
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+      }
     }
 }
