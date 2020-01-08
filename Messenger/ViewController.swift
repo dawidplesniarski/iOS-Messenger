@@ -9,11 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        //let jsonUrlString = "http://tgryl.pl/shoutbox/messages"
+        //guard let url = URL(string: jsonUrlString) else { return }
+        
+        if let url = URL(string: "http://tgryl.pl/shoutbox/messages") {
+           URLSession.shared.dataTask(with: url) { data, response, error in
+              if let data = data {
+                 if let jsonString = String(data: data, encoding: .utf8) {
+                    print(jsonString)
+                 }
+               }
+           }.resume()
+        }
+        
+        
     }
+    
 
 
 }
