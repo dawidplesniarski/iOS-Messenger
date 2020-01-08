@@ -15,14 +15,19 @@ struct User: Codable{
        var date: String
 }
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController{
+
     @IBOutlet weak var tableView: UITableView!
+    
+    //var messagesArray:[(content: String, login: String, date: String)] = []
+    var messagesArray:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        print(messagesArray.count)
     }
+    
     
     func loadData(){
         let jsonUrlString = "http://tgryl.pl/shoutbox/messages"
@@ -39,14 +44,36 @@ class ViewController: UIViewController {
                     print("Content: " + message.content)
                     print("Login: " + message.login)
                     print("Date: " + message.date)
+                    //self.messagesArray.append((message.content,message.login,message.date))
+                    self.messagesArray.append("Content: "+message.content+"Login: "+message.login+"Date "+message.date)
                 }
             }catch let jsonErr{
                 print(jsonErr)
             }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+
         }.resume()
 
     }
-
-
 }
 
+extension ViewController: UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messagesArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel!.numberOfLines = 3
+        
+        cell.textLabel?.text = messagesArray[indexPath.row]
+
+        let message = messagesArray[indexPath.row]
+        cell.textLabel?.text = message
+        return cell
+    }
+}
