@@ -8,28 +8,44 @@
 
 import UIKit
 
+
+struct User: Codable{
+       var content: String
+       var login: String
+       var date: String
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let jsonUrlString = "http://tgryl.pl/shoutbox/messages"
-        //guard let url = URL(string: jsonUrlString) else { return }
-        
-        if let url = URL(string: "http://tgryl.pl/shoutbox/messages") {
-           URLSession.shared.dataTask(with: url) { data, response, error in
-              if let data = data {
-                 if let jsonString = String(data: data, encoding: .utf8) {
-                    print(jsonString)
-                 }
-               }
-           }.resume()
-        }
-        
-        
+        loadData()
     }
     
+    func loadData(){
+        let jsonUrlString = "http://tgryl.pl/shoutbox/messages"
+        guard let url = URL(string: jsonUrlString) else { return }
+
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            guard let data = data else { return }
+            do{
+                let decoder = JSONDecoder()
+                let messages = try decoder.decode([User].self, from:data) //Decode JSON Response Data
+                //print(messages)
+                
+                for message in messages{
+                    print("Content: " + message.content)
+                    print("Login: " + message.login)
+                    print("Date: " + message.date)
+                }
+            }catch let jsonErr{
+                print(jsonErr)
+            }
+        }.resume()
+
+    }
 
 
 }
