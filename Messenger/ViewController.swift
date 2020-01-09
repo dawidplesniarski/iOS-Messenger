@@ -13,6 +13,7 @@ struct User: Codable{
        var content: String
        var login: String
        var date: String
+       var id: String
 }
 
 class ViewController: UIViewController{
@@ -20,9 +21,10 @@ class ViewController: UIViewController{
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
     
-    //var messagesArray:[(content: String, login: String, date: String)] = []
-    var messagesArray:[String] = []
+    var messagesArray:[(content: String, id: String)] = []
+    //var messagesArray:[String] = []
     let myLogin = "Dawid"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +102,8 @@ class ViewController: UIViewController{
                     print("Login: " + message.login)
                     print("Date: " + message.date)
                     //self.messagesArray.append((message.content,message.login,message.date))
-                    self.messagesArray.append("Content: "+message.content+"\nLogin: "+message.login+"\nDate "+message.date)
+                    //self.messagesArray.append("Content: "+message.content+"\nLogin: "+message.login+"\nDate "+message.date)
+                    self.messagesArray.append(("Content: \(message.content), Login: \(message.login), Date: \(message.date)",message.id))
                 }
             }catch let jsonErr{
                 print(jsonErr)
@@ -124,9 +127,9 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         cell.backgroundColor = UIColor.clear
         cell.textLabel!.numberOfLines = 3
         
-        cell.textLabel?.text = messagesArray[indexPath.row]
+        cell.textLabel?.text = messagesArray[indexPath.row].content
 
-        let message = messagesArray[indexPath.row]
+        let message = messagesArray[indexPath.row].content
         cell.textLabel?.text = message
         return cell
     }
