@@ -35,6 +35,35 @@ class ViewController: UIViewController{
     @IBAction func sendBtnPressed(_ sender: Any) {
        sendMsg()
     }
+    /*
+    func deleteMsg(id: String){
+        //let parameters = ["ID": "16"] as [String : Any]
+        guard let url = URL(string: "http://tgryl.pl/shoutbox/message/") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let httpBody = try? JSONSerialization.data(withJSONObject:id, options: []) else { return }
+        request.httpBody = httpBody
+    }*/
+    
+    func deleteMsg(id: String){
+        let firstTodoEndpoint: String = "http://tgryl.pl/shoutbox/message/\(id)"
+        print(firstTodoEndpoint)
+        var firstTodoUrlRequest = URLRequest(url: URL(string: firstTodoEndpoint)!)
+        firstTodoUrlRequest.httpMethod = "DELETE"
+
+        let session = URLSession.shared
+
+        let task = session.dataTask(with: firstTodoUrlRequest) {
+          (data, response, error) in
+          guard let _ = data else {
+            print("error calling DELETE on /todos/1")
+            return
+          }
+          print("DELETE ok")
+        }
+        task.resume()
+    }
     
     func sendMsg(){
         let parameters = ["content": textView.text ?? "message", "login": myLogin] as [String : Any]
@@ -137,10 +166,12 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
         print("Deleted")
-        let idToDelete = messagesArray[indexPath.row].id
-        self.messagesArray.remove(at: indexPath.row)
+        let idToDelete = messagesArray[indexPath.row].id //przypisujemy ID do usunięcia
+        self.messagesArray.remove(at: indexPath.row) // usuwamy z tablicy
         self.tableView.deleteRows(at: [indexPath], with: .automatic)
-        print(idToDelete)
+        print(idToDelete)//wypisuje ID
+        
+        deleteMsg(id: idToDelete)
       }
     }
 }
