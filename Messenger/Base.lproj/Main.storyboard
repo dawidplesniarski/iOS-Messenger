@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="loginTapped:" destination="vMk-XB-KEl" eventType="primaryActionTriggered" id="MIC-Za-S13"/>
+                                    <action selector="loginTapped:" destination="vMk-XB-KEl" eventType="primaryActionTriggered" id="Zc9-Sj-GyE"/>
                                 </connections>
                             </button>
                         </subviews>

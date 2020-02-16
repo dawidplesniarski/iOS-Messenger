@@ -19,13 +19,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        
         let authUI  = FUIAuth.defaultAuthUI()
         
         guard authUI != nil else {
             return
         }
         authUI?.delegate = self
+        authUI?.providers = [FUIEmailAuth()]
         
         let authViewController = authUI!.authViewController()
         
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     
 }
 
-extension LoginViewController : FUIAuthDelegate{
+extension LoginViewController: FUIAuthDelegate{
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if error != nil {
             return
