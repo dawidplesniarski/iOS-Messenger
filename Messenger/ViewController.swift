@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 
 struct User: Codable{
@@ -23,11 +24,21 @@ class ViewController: UIViewController{
     
     var messagesArray:[(content: String, id: String)] = []
     //var messagesArray:[String] = []
-    let myLogin = "Dawid"
+    var myLogin: String = ""
+    
+    func getUserMail(){
+        let user = Auth.auth().currentUser
+        if let user = user {
+            myLogin = user.email ?? "User"
+        }
+        
+        print(myLogin)
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserMail()
         loadData()
         print(messagesArray.count)
     }
