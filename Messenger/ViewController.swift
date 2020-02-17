@@ -29,7 +29,7 @@ class ViewController: UIViewController{
     func getUserMail(){
         let user = Auth.auth().currentUser
         if let user = user {
-            myLogin = user.email ?? "User"
+            myLogin = user.displayName ?? "User"
         }
         
         print(myLogin)
@@ -46,16 +46,7 @@ class ViewController: UIViewController{
     @IBAction func sendBtnPressed(_ sender: Any) {
        sendMsg()
     }
-    /*
-    func deleteMsg(id: String){
-        //let parameters = ["ID": "16"] as [String : Any]
-        guard let url = URL(string: "http://tgryl.pl/shoutbox/message/") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        guard let httpBody = try? JSONSerialization.data(withJSONObject:id, options: []) else { return }
-        request.httpBody = httpBody
-    }*/
+    
     
     func deleteMsg(id: String){
         let firstTodoEndpoint: String = "http://tgryl.pl/shoutbox/message/\(id)"
@@ -125,6 +116,15 @@ class ViewController: UIViewController{
             task.resume()
     }
     
+   
+    @IBAction func logoutTapped(_ sender: Any) {
+        try! Auth.auth().signOut()
+
+        if let storyboard = self.storyboard {
+                    let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                    self.present(vc, animated: false, completion: nil)
+                }
+    }
     
     func loadData(){
         let jsonUrlString = "http://tgryl.pl/shoutbox/messages"
@@ -185,4 +185,5 @@ extension ViewController: UITableViewDataSource,UITableViewDelegate{
         deleteMsg(id: idToDelete)
       }
     }
+    
 }
