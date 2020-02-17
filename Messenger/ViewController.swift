@@ -119,11 +119,7 @@ class ViewController: UIViewController{
    
     @IBAction func logoutTapped(_ sender: Any) {
         try! Auth.auth().signOut()
-
-        if let storyboard = self.storyboard {
-                    let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-                    self.present(vc, animated: false, completion: nil)
-                }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func loadData(){

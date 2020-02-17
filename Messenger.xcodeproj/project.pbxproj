@@ -22,6 +22,8 @@
 		2527D47C159AAC55C74A91C7 /* Pods-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		674880E0CFEC92B5A9C79E9C /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F37690423F9F3FB00B139B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6F38E15823FB3731001BAC0D /* MontserratAlternates-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-ExtraLightItalic.otf"; path = "../../../montserrat/MontserratAlternates-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		6F38E15923FB37BF001BAC0D /* Montserrat-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraLight.otf"; path = "../../../montserrat/Montserrat-ExtraLight.otf"; sourceTree = "<group>"; };
 		6F5B5B6E23C621B80072A20E /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F5B5B7123C621B80072A20E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F5B5B7323C621B80072A20E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +62,6 @@
 			children = (
 				6F5B5B7023C621B80072A20E /* Messenger */,
 				6F5B5B6F23C621B80072A20E /* Products */,
-				6FD799CD23FB11A300F985AF /* Fonts */,
 				C43C98386E5B5C4F56F723CD /* Pods */,
 				4C672A683F78DDFE7121B686 /* Frameworks */,
 			);
@@ -86,6 +87,7 @@
 				6FDAED3F23F9BC62006A1324 /* GoogleService-Info.plist */,
 				6F5B5B7C23C621BA0072A20E /* LaunchScreen.storyboard */,
 				6F5B5B7F23C621BA0072A20E /* Info.plist */,
+				6FD799CD23FB11A300F985AF /* Fonts */,
 			);
 			path = Messenger;
 			sourceTree = "<group>";
@@ -93,6 +95,8 @@
 		6FD799CD23FB11A300F985AF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6F38E15823FB3731001BAC0D /* MontserratAlternates-ExtraLightItalic.otf */,
+				6F38E15923FB37BF001BAC0D /* Montserrat-ExtraLight.otf */,
 				6FD799CE23FB11FA00F985AF /* MontserratAlternates-ExtraLight.otf */,
 			);
 			path = Fonts;
