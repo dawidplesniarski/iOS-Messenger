@@ -30,6 +30,7 @@
 		6F5B5B7A23C621BA0072A20E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F5B5B7D23C621BA0072A20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F5B5B7F23C621BA0072A20E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FD799CE23FB11FA00F985AF /* MontserratAlternates-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-ExtraLight.otf"; path = "../../montserrat/MontserratAlternates-ExtraLight.otf"; sourceTree = "<group>"; };
 		6FDAED3F23F9BC62006A1324 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FC96B4FD5622CF839C13025E /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +60,7 @@
 			children = (
 				6F5B5B7023C621B80072A20E /* Messenger */,
 				6F5B5B6F23C621B80072A20E /* Products */,
+				6FD799CD23FB11A300F985AF /* Fonts */,
 				C43C98386E5B5C4F56F723CD /* Pods */,
 				4C672A683F78DDFE7121B686 /* Frameworks */,
 			);
@@ -86,6 +88,14 @@
 				6F5B5B7F23C621BA0072A20E /* Info.plist */,
 			);
 			path = Messenger;
+			sourceTree = "<group>";
+		};
+		6FD799CD23FB11A300F985AF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6FD799CE23FB11FA00F985AF /* MontserratAlternates-ExtraLight.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C43C98386E5B5C4F56F723CD /* Pods */ = {

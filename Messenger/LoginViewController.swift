@@ -11,11 +11,12 @@ import FirebaseUI
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var loginButtonBlurEffect: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        loginButtonBlurEffect.layer.cornerRadius = 10
+        loginButtonBlurEffect.clipsToBounds = true
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
@@ -25,9 +26,24 @@ class LoginViewController: UIViewController {
             return
         }
         authUI?.delegate = self
-        authUI?.providers = [FUIEmailAuth()]
+        authUI?.providers = [FUIEmailAuth(),FUIGoogleAuth()]
         
         let authViewController = authUI!.authViewController()
+        
+//        let backgroundImage = UIImageView(image: UIImage(named: "login-background"))
+//
+//        backgroundImage.contentMode = .scaleAspectFill
+//
+//        authViewController.view.insertSubview(backgroundImage, at: 0)
+
+        let backgroundImage = UIImageView(image: UIImage(named: "login-background"))
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        authViewController.view.insertSubview(backgroundImage, at: 0)
+        
+//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+//        backgroundImage.image = UIImage(named: "login-background")
+//        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+//        authViewController.view.insertSubview(backgroundImage, at: 0)
         
         present(authViewController, animated: true, completion: nil)
     }
