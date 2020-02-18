@@ -38,13 +38,16 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
         getUserMail()
         loadData()
         print(messagesArray.count)
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
-       sendMsg()
+        sendMsg() // json post
+        messagesArray = [] // reset array
+        loadData() // get json and reload table
     }
     
     
@@ -109,8 +112,11 @@ class ViewController: UIViewController{
                 } catch let error {
                     print(error.localizedDescription)
                 }
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.textView.text = ""
                 }
             })
             task.resume()
@@ -147,6 +153,7 @@ class ViewController: UIViewController{
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                
             }
 
         }.resume()
