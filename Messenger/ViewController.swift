@@ -21,6 +21,10 @@ class ViewController: UIViewController{
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textAreaBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var sendButtonBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var signOutButtonBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var tableViewBlurEffect: UIVisualEffectView!
     
     var messagesArray:[(content: String, id: String)] = []
     //var messagesArray:[String] = []
@@ -38,6 +42,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        blur()
         self.tableView.delegate = self
         getUserMail()
         loadData()
@@ -166,6 +171,17 @@ class ViewController: UIViewController{
             }
 
         }.resume()
+    }
+    
+    func blur(){
+        textAreaBlurEffect.layer.cornerRadius = 10
+        textAreaBlurEffect.clipsToBounds = true
+        sendButtonBlurEffect.layer.cornerRadius = 10
+        sendButtonBlurEffect.clipsToBounds = true
+        signOutButtonBlurEffect.layer.cornerRadius = 10
+        signOutButtonBlurEffect.clipsToBounds = true
+        tableViewBlurEffect.layer.cornerRadius = 10
+        tableViewBlurEffect.clipsToBounds = true
     }
 }
 
