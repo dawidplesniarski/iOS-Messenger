@@ -47,9 +47,17 @@ class ViewController: UIViewController{
     @IBAction func sendBtnPressed(_ sender: Any) {
         sendMsg() // json post
         messagesArray = [] // reset array
-        loadData() // get json and reload table
+        run(after: 300){
+            self.loadData() // get json and reload table
+        }
     }
     
+    func run(after seconds: Int, completion: @escaping () -> Void){
+        let deadline = DispatchTime.now() + .milliseconds(seconds)
+        DispatchQueue.main.asyncAfter(deadline: deadline){
+            completion()
+        }
+    }
     
     func deleteMsg(id: String){
         let firstTodoEndpoint: String = "http://tgryl.pl/shoutbox/message/\(id)"
@@ -129,6 +137,7 @@ class ViewController: UIViewController{
     }
     
     func loadData(){
+        messagesArray = []
         let jsonUrlString = "http://tgryl.pl/shoutbox/messages"
         guard let url = URL(string: jsonUrlString) else { return }
 
@@ -153,7 +162,7 @@ class ViewController: UIViewController{
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                
+                print("tableview reloaded")
             }
 
         }.resume()
