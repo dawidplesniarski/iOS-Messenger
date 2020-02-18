@@ -30,21 +30,6 @@ class LoginViewController: UIViewController {
         
         let authViewController = authUI!.authViewController()
         
-//        let backgroundImage = UIImageView(image: UIImage(named: "login-background"))
-//
-//        backgroundImage.contentMode = .scaleAspectFill
-//
-//        authViewController.view.insertSubview(backgroundImage, at: 0)
-
-        let backgroundImage = UIImageView(image: UIImage(named: "login-background"))
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        authViewController.view.insertSubview(backgroundImage, at: 0)
-        
-//        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-//        backgroundImage.image = UIImage(named: "login-background")
-//        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-//        authViewController.view.insertSubview(backgroundImage, at: 0)
-        
         present(authViewController, animated: true, completion: nil)
     }
     
